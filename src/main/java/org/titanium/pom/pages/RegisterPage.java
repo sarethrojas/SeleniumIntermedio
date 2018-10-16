@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 public class RegisterPage {
     WebDriver driver;
 
-    By txtFirstNAme = By.name("firstname");
+    By txtFirstName = By.name("firstName");
     By ddlCountry = By.name("country");
     By txtUserName = By.id("email");
     By txtPassword = By.name("password");
@@ -18,11 +18,11 @@ public class RegisterPage {
         this.driver = driver;
     }
 
-    public void setTxtFirstNAme(String firstNAme){
-        driver.findElement(txtFirstNAme).sendKeys(firstNAme);
+    public void setFirstName(String firstName){
+        driver.findElement(txtFirstName).sendKeys(firstName);
     }
 
-    public void selectcountry(String country){
+    public void selectCountry(String country){
         new Select(driver.findElement(ddlCountry)).selectByVisibleText(country);
     }
 
@@ -42,5 +42,10 @@ public class RegisterPage {
         driver.findElement(btnSubmit).click();
     }
 
-
+    public void submitUserInformation(String userName, String password){
+        this.setUserName(userName);
+        this.setPassword(password);
+        this.setConfirmPassword(password);
+        this.clickOnSubmit();
+    }
 }

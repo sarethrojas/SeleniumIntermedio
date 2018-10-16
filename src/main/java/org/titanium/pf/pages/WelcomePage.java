@@ -1,19 +1,24 @@
-package org.titanium.pom.pages;
+package org.titanium.pf.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class WelcomePage {
     WebDriver driver;
 
-    By lnkRegister = By.linkText("REGISTER");
+    @FindBy(linkText = "REGISTER")
+    WebElement lnkRegister;
 
     public WelcomePage(WebDriver driver){
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
 
     public void clickRegisterLink(){
-        driver.findElement(lnkRegister).click();
+        lnkRegister.click();
     }
 
     public String getWelcomeTitle(){
